@@ -9,9 +9,11 @@ public class DriverManager {
     private Page page;
 
     public Page initBrowser(){
+        boolean isCI = System.getenv("CI") != null;
+
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-                .setHeadless(true) // change to true if running in CI
+                .setHeadless(isCI) // Headless only in CI
         );
 
         context = browser.newContext();
