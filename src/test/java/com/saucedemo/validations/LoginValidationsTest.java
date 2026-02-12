@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class LoginValidations extends BaseTest {
+public class LoginValidationsTest extends BaseTest {
 
     @Test(description = "User can log in with valid credentials")
     public void userCanLogInWithValidCredentials(){
