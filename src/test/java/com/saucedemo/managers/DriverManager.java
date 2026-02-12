@@ -11,7 +11,7 @@ public class DriverManager {
     public Page initBrowser(){
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-                .setHeadless(false) // change to true if running in CI
+                .setHeadless(true) // change to true if running in CI
         );
 
         context = browser.newContext();
