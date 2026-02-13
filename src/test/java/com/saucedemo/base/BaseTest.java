@@ -1,12 +1,14 @@
 package com.saucedemo.base;
 
 import com.microsoft.playwright.*;
+import com.saucedemo.listeners.AllureListener;
 import com.saucedemo.managers.DriverManager;
 import com.saucedemo.managers.PageObjectManagers;
 import com.saucedemo.utilities.ScreenshotUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 public class BaseTest {
     protected PageObjectManagers pages;

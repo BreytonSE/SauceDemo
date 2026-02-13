@@ -1,7 +1,9 @@
 package com.saucedemo.utilities;
 
 import com.microsoft.playwright.Page;
+import io.qameta.allure.Allure;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,15 +21,29 @@ public class ScreenshotUtil {
     public static void capture(Page page, String fileName) {
         try{
             createScreenshotDirectory();
-            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+            String timeStamp = LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
 
-            Path path = Paths.get(SCREENSHOT_DIR + fileName + "_" + timeStamp + ".png");
+            String fullFileName = fileName + "_" +  timeStamp + ".png";
+            Path path = Paths.get(SCREENSHOT_DIR + fullFileName);
 
-            page.screenshot(new Page.ScreenshotOptions()
-                    .setPath(path)
+//            Takes screenshot as byte array
+            byte[] screenshot = page.screenshot(new Page.ScreenshotOptions()
                     .setFullPage(true));
 
-            System.out.println("Screenshot saved at: " + path.toAbsolutePath());
+//            Save to file
+            Files.write(path, screenshot);
+
+            System.out.println("Screenshot saved at: " + fullFileName);
+
+//            Attach to Allure
+            Allure.addAttachment(
+                    "Screenshot - " + fileName,
+                    "image/png",
+                    new ByteArrayInputStream(screenshot),
+                    ".png"
+            );
+
         }catch (Exception e){
             System.err.println("Failed to capture screenshot: " + e.getMessage());
         }
