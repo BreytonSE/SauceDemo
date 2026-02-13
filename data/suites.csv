@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Feb 13 09:18:34 UTC 2026","Fri Feb 13 09:18:34 UTC 2026","135","Surefire suite","Surefire test","com.saucedemo.validations.LoginValidationsTest","com.saucedemo.validations.LoginValidationsTest","userCanLogInWithValidCredentials","User can log in with valid credentials",""
+"passed","Fri Feb 13 09:18:35 UTC 2026","Fri Feb 13 09:18:35 UTC 2026","101","Surefire suite","Surefire test","com.saucedemo.validations.LoginValidationsTest","com.saucedemo.validations.LoginValidationsTest","userCannotLogInWithInvalidCredentials","User cannot log in with invalid credentials",""
